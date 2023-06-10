@@ -1,0 +1,7 @@
+<ng-container [ngSwitch]="field.type">
+    <app-dynamic-input *ngSwitchCase="'text'" [formName]="formName" [field]="field"></app-dynamic-input>
+    <app-dynamic-input *ngSwitchCase="'number'" [formName]="formName" [field]="field"></app-dynamic-input>
+    <app-dynamic-select *ngSwitchCase="'select'" [formName]="formName" [field]="field"></app-dynamic-select>
+    <app-dynamic-radio *ngSwitchCase="'radio'" [formName]="formName" [field]="field"></app-dynamic-radio>
+    <app-dynamic-checkbox *ngSwitchCase="'checkbox'" [formName]="formName" [field]="field"></app-dynamic-checkbox>
+</ng-container>

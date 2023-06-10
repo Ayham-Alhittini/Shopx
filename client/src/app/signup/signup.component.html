@@ -1,0 +1,127 @@
+<div class="vertical-center">
+    <div class="form-container mat-elevation-z5" *ngIf="!displayConfirm"> 
+        <mat-stepper linear="true">
+            <mat-step [stepControl]="firstSignupForm">
+                <form  [formGroup]="firstSignupForm">
+
+                    <h1 class="center">
+                        Sign up
+                    </h1>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="Name" 
+                            formControlName="name" 
+                        />
+                        <mat-error *ngIf="firstSignupForm.get('name')?.hasError('required')">
+                            Name is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <span matPrefix>&nbsp; +962 &nbsp;</span>
+                        <input 
+                            type="number"
+                            matInput 
+                            placeholder="7********" 
+                            formControlName="phoneNumber" 
+                        />
+                        <mat-error *ngIf="firstSignupForm.get('phoneNumber')?.hasError('required')">
+                            a phone number is required!
+                        </mat-error>
+                        <mat-error *ngIf="firstSignupForm.get('phoneNumber')?.hasError('pattern')">
+                            phone number needs to be 9 digits!
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <div class="center margin-top">
+                        <button [disabled]="firstSignupForm.invalid" matStepperNext mat-raised-button>Next</button>
+                    </div>
+
+                    <span class="center margin-top">
+                        already have an account? <a class="signup-link" routerLink="/login">Login!</a>
+                    </span>
+
+                    <span class="center margin-top">
+                        open shop? <a class="signup-link" routerLink="/seller-signup">Sign Up as a seller</a>
+                    </span>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondSignupForm">
+                <form [formGroup]="secondSignupForm" (ngSubmit)="register()">
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input 
+                            type="email"
+                            matInput 
+                            placeholder="example@gmail.com" 
+                            formControlName="email" 
+                        />
+                        <mat-error *ngIf="secondSignupForm.get('email')?.hasError('required')">
+                            email is required!
+                        </mat-error>
+                        <mat-error *ngIf="secondSignupForm.get('email')?.hasError('email')">
+                            email should be in right format!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input 
+                            type="password"
+                            matInput 
+                            placeholder="Password" 
+                            formControlName="password" 
+                        />
+                        <mat-error *ngIf="secondSignupForm.get('password')?.hasError('required')">
+                            password is required!
+                        </mat-error>
+                        <mat-error *ngIf="secondSignupForm.get('password')?.hasError('pattern')">
+                            Weak password
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input 
+                            type="password"
+                            matInput 
+                            placeholder="Confirm Password" 
+                            formControlName="confirmPassword" 
+                        />
+                        <mat-error *ngIf="secondSignupForm.get('confirmPassword')?.hasError('required')">
+                            please confirm your password
+                        </mat-error>
+                        <mat-error *ngIf="secondSignupForm.get('confirmPassword')?.hasError('passwordsMatch')">
+                            does not match password
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <div class="center margin-top gap">
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button [disabled]="secondSignupForm.invalid || disableSubmit" mat-raised-button color="accent">SIGN UP</button>
+                    </div>
+
+                </form>
+            </mat-step>
+        </mat-stepper>
+    </div>
+
+    <mat-card class="card " *ngIf="displayConfirm">
+        <mat-card-header>
+          <mat-card-title class="card-title">Confirm email</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>A confirmation Email has been sent to you, please confirm your email.</p>
+          <p>If the email didn't reach you<a class="signup-link" routerLink="/resend-confirm">resend.</a></p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button routerLink="/login" mat-button>DONE</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

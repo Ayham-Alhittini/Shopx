@@ -1,0 +1,49 @@
+.filter {
+    width: 100%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin: 20px;
+    margin-bottom: 5px;
+    font-size: x-large;
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+.categories {
+    align-self: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.subtitle {
+    margin-left: 30px;
+    margin-right: 20px;
+    font-size: large;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+.subtitle:hover {
+    text-decoration: underline;
+}
+
+.form-wrapper {
+    width: 90%;
+}
+
+.actions {
+    margin-bottom: 16px;
+    gap: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

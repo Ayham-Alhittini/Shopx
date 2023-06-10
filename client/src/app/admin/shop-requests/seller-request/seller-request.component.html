@@ -1,0 +1,22 @@
+<div class="card box">
+    <div class="card-content">
+      <h4>Username: {{request.userName}}</h4>
+      <div class="divider"></div>
+      <p><span class="label">Email:</span> <span class="info">{{request.email}}</span></p>
+      <p><span class="label">Phone Number:</span> <span class="info">{{request.phoneNumber}}</span></p>
+      <p><span class="label">Known As:</span> <span class="info">{{request.knownAs}}</span></p>
+      <p><span class="label">Created:</span> <span class="info created">{{request.created}}</span></p>
+      <div class="divider"></div>
+      <p><span class="label">Shop City:</span> <span class="info">{{request.shopCity}}</span></p>
+      <p><span class="label">Shop Description:</span> <span class="info">{{request.shopDescription}}</span></p>
+      <p><span class="label">Tax Number:</span> <span class="info">{{request.taxNumber}}</span></p>
+      <div class="divider"></div>
+      <p><span class="label">Full Name:</span> <span class="info">{{request.fullName}}</span></p>
+      <p><span class="label">Bank Name:</span> <span class="info">{{request.bankName}}</span></p>
+      <p><span class="label">Bank Account Number:</span> <span class="info">{{request.bankAccountNumber}}</span></p>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="onAccept()">Accept</button>
+      <button mat-raised-button color="warn" (click)="onReject()">Reject</button>
+    </div>
+  </div>

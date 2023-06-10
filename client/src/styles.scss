@@ -1,0 +1,123 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$shopx-primary: mat.define-palette(mat.$indigo-palette);
+$shopx-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$shopx-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$shopx-theme: mat.define-light-theme((
+  color: (
+    primary: $shopx-primary,
+    accent: $shopx-accent,
+    warn: $shopx-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($shopx-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --bg-color: #fff7fa;
+  --accent: #f74a8a;
+  --primary: #2F234B;
+}
+
+html, body { height: 100%; background-color: var(--bg-color);}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cdk-overlay-pane:has(app-search-bar) {
+  width: 100%;
+  right: 0 !important;
+
+  app-search-bar {
+    width: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .mat-mdc-paginator-page-size-label,
+  .mat-mdc-paginator-range-label {
+    display: none;
+  }
+}
+
+.mat-drawer-container{
+  background-color: var(--bg-color) !important;
+}
+
+.form-container {
+  background-color: white;
+  display: block;
+  width: 300px;
+  margin: auto;
+  
+  padding: 0 50px 50px;
+  border-radius: 16px;
+}
+
+mat-form-field{
+  width: 100%;
+  margin-top: 16px;
+}
+
+.full-width 
+{
+  width: 100%;
+}
+
+.dialog {
+  display: block;
+  min-width: 300px;
+  margin: auto;
+  padding: 50px;
+  border-radius: 16px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.margin-top {
+  margin-top: 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+

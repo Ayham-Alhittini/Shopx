@@ -1,0 +1,53 @@
+.container {
+    min-width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px 15%;
+    margin-bottom: 50px;
+    background-color: white;
+    border-radius: 25px;
+}
+
+@media screen and (max-width: 599px) {
+    .container {
+        margin: 50px 5%;
+    }
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.subcategory {
+    color: var(--primary);
+    font-weight: bold;// decide if it looks good and not fuzy in other browsers
+    min-width: fit-content;
+    display: block;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid var(--primary);
+    cursor: pointer;
+}
+
+.subcategory:hover,
+.subcategory:focus,
+.subcategory:active {
+    color: white;
+    background-color: var(--primary);
+}
+
+.flex-subcategory {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}

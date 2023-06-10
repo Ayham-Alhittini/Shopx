@@ -1,0 +1,78 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer color="primary" class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) ? false : true">
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list class="nav-list" *ngIf="user.accountType === 'Seller'">
+        <a mat-list-item routerLink="/seller-profile">Profile</a>
+        <a mat-list-item routerLink="/products-statics">Statistics</a>
+        <a mat-list-item routerLink="/seller-products">Products</a>
+        <a mat-list-item routerLink="/add-product">Add Product</a>
+      </mat-nav-list>
+
+      <mat-nav-list class="nav-list" *ngIf="user.accountType === 'Admin'">
+        <a mat-list-item routerLink="/admin/shops-requests">Shops Requests</a>
+        <a mat-list-item routerLink="/admin/manage-users">Manage Users</a>
+        <a mat-list-item routerLink="/admin/manage-products">Manage Products</a>
+        <a mat-list-item href="https://dashboard.stripe.com" target="_blank">Manage Payments</a>
+      </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="flex">
+        
+        <div class="flex1 icons-left">
+          <div class="icon-holder flex" aria-label="Toggle sidenav" (click)="drawer.toggle()">
+            <mat-icon aria-label="Menu">menu</mat-icon>
+          </div>
+
+          <span style="font-size: 20px;">shopx</span> <!-- <h2>shopx</h2> -->
+        </div>
+
+        <div class="icons-right">
+
+          <div class="icon-holder flex" aria-label="notifications"  [matMenuTriggerFor]="notificationsMenu" *ngIf="user.accountType === 'Seller'">
+            <mat-icon >notifications</mat-icon>
+          </div>
+          
+          <div class="icon-holder flex" aria-label="account" routerLink="/seller-profile" *ngIf="user.accountType === 'Seller'">
+            <mat-icon>account_circle</mat-icon>  <!-- person -->
+          </div>
+
+
+          <mat-menu #notificationsMenu="matMenu">
+            <div *ngIf="notificationsArray.length === 0" mat-menu-item>
+              <span>No New Notifications</span>
+            </div>
+            <div *ngIf="notificationsArray.length > 0">
+              <button mat-menu-item *ngFor="let notification of notificationsArray" [routerLink]="'/notifications/' + notification.id">
+                <mat-icon *ngIf="notification.read">check_circle_outline</mat-icon>
+                <mat-icon *ngIf="!notification.read">radio_button_unchecked</mat-icon>
+                <span>{{ notification.title }}</span>
+              </button>
+            </div>
+            
+          </mat-menu>
+
+          <div class="icon-holder flex" [matMenuTriggerFor]="menu">
+            <mat-icon #moreicon>more_vert</mat-icon>
+          </div>
+          
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>logout</span>
+            </button>
+            <button mat-menu-item *ngIf="user.accountType === 'Admin'" (click)="changePassword()">
+              <mat-icon>password</mat-icon>
+              <span>change password</span>
+            </button>
+          </mat-menu>
+        </div>
+        
+      </mat-toolbar>
+      <!-- Add Content Here -->
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

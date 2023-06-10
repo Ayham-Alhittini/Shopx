@@ -1,0 +1,125 @@
+<app-dashboard>
+    <div class="container">
+        <mat-stepper [orientation]="(stepperOrientation | async)" linear="true" #stepper>
+            <mat-step [editable]="editable" [stepControl]="addProductForm">
+                <p class="title">
+                    Add a Product
+                </p>
+
+                <form class="form" [formGroup]="addProductForm">
+                    <ng-template matStepLabel>Product Info</ng-template>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Product Name</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="product name" 
+                            formControlName="productName" 
+                        />
+                        <mat-error *ngIf="addProductForm.get('productName')?.hasError('required')">
+                            a product name is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Product Description</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="write a description of the product here" 
+                            formControlName="productDescription" 
+                        />
+                        <mat-error *ngIf="addProductForm.get('productDescription')?.hasError('required')">
+                            a description for the product is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Category</mat-label>
+                        <input matInput disabled [value]="category?.label">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Subcategory</mat-label>
+                        <input matInput disabled [value]="subCategory?.label">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Price</mat-label>
+                        <input 
+                            type="number"
+                            matInput 
+                            placeholder="price" 
+                            formControlName="price" 
+                        />
+                        <span matTextPrefix>$&nbsp;</span>
+                        <mat-error *ngIf="addProductForm.get('price')?.hasError('required')">
+                            a price for the product is required!
+                        </mat-error>
+                        <mat-error *ngIf="addProductForm.get('price')?.hasError('min')">
+                            product price can not be less than "0" 
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Quantiy</mat-label>
+                        <input 
+                            type="number"
+                            matInput 
+                            placeholder="quantity" 
+                            formControlName="quantity" 
+                        />
+                        <mat-error *ngIf="addProductForm.get('quantity')?.hasError('required')">
+                            the quantity for the product needs to be specified!
+                        </mat-error>
+                        <mat-error *ngIf="addProductForm.get('quantity')?.hasError('min')">
+                            quantity can not be less than "0" 
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-card-actions class="flex-center buttons">
+                        <a mat-stroked-button routerLink="/seller-products">CANCLE</a>
+                        <button [disabled]="addProductForm.invalid" matStepperNext mat-raised-button color="accent">Next</button>
+                    </mat-card-actions>
+                </form>
+            </mat-step> 
+            <!-- end of first mat step-->
+            <mat-step [editable]="editable" [stepControl]="addProductSpecForm">
+                
+                <ng-template matStepLabel>Product Details</ng-template>
+
+                <form class="form" (ngSubmit)="submit()">
+                    <app-dynamic-form (newform)="setForm($event)" [model]="model"></app-dynamic-form>
+
+                    <mat-card-actions class="flex-center buttons">
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button [disabled]="addProductSpecForm?.invalid" matStepperNext mat-raised-button color="accent">Add Product</button>
+                    </mat-card-actions>
+                </form>
+            
+            </mat-step>
+            <!-- end of second mat step-->
+            <mat-step>
+
+                <ng-template matStepLabel>Photos</ng-template>
+
+                <div  class="images-container">
+                    <div id="image-holder" class="holder flex-center" *ngFor="let photo of photoList" (click)="deleteImage(photo.id)">
+                        <img class="image" [src]="photo.url | safe" alt="image of product">
+                        <div class="flex-center overlay"><mat-icon>delete</mat-icon></div>
+                    </div>
+                    
+                    <div *ngIf="photoList.length < 5" (click)="openDialog()" class="holder flex-center">
+                        <mat-icon class="big-icon">add_photo_alternate</mat-icon>
+                    </div>
+                </div>
+
+                <mat-card-actions class="flex-center buttons">
+                    <button matStepperNext mat-raised-button routerLink="/seller-products" color="accent">Done</button>
+                </mat-card-actions>
+            </mat-step>
+            <!-- end of third mat step-->
+        </mat-stepper>
+    </div>
+</app-dashboard>

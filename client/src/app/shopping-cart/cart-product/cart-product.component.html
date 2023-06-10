@@ -1,0 +1,63 @@
+<div class="wrapper">
+    <div class="card">
+        <mat-card 
+        [routerLink]="'/home/product/' + product.product.id" matRipple [matRippleUnbounded]="false" class="seller-product-card">
+            
+            <div class="content-holder">
+                <mat-card-header>
+                    <div class="image-holder">
+                        <img *ngIf="product.product.productPhotos[0]" loading="lazy" class="image" width="272" height="204" [src]="product.product.productPhotos[0]?.url"/>
+                        <img *ngIf="!product.product.productPhotos[0]?.url" loading="lazy" class="image" width="272" height="204" src="/assets/no-image.png"/>
+                    </div>
+                    <mat-card-title-group>
+                        <mat-card-title>{{ product.product.productName }}</mat-card-title>
+                        <mat-card-subtitle>{{ product.product.category }}, {{ product.product.subCategory }}</mat-card-subtitle>
+                    </mat-card-title-group>
+                </mat-card-header>
+        
+                
+                <mat-card-actions class="actions" align="end">
+                    <div class="flex-center gap-margin">
+                        <div class="info flex-center"><mat-icon color="accent">inventory</mat-icon><span>: {{ productQuantity }}</span></div>
+                        <div class="info flex-center"><mat-icon color="accent">attach_money</mat-icon><span [ngClass]="{'slashed' : product.product.discountRate > 0}">: {{ product.product.price }}</span></div>
+                        <div 
+                            *ngIf="product.product.discountRate && product.product.discountRate > 0"
+                            class="info flex-center"
+                        >
+                            <span>/ {{ product.product.priceAfterDiscount }}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button 
+                            *ngIf="authService.loadedUser"
+                            [matTooltip]="onWishlist ? 'remove from favorites' : 'add to favorites'" 
+                            matTooltipShowDelay="1000" 
+                            mat-icon-button 
+                            (click)="$event.stopPropagation();toggleFavorites()"
+                        >
+                            <mat-icon color="accent">{{ onWishlist ? 'favorite' : 'favorite_outline'}}</mat-icon>
+                        </button>
+                        <button 
+                            [matTooltip]="onCart ? 'remove from shopping cart' : 'add to shopping cart'" 
+                            matTooltipShowDelay="1000" 
+                            mat-icon-button 
+                            (click)="$event.stopPropagation();toggleShoppingCart()"
+                        >
+                            <mat-icon color="primary">{{ onCart ? 'remove_shopping_cart' : 'add_shopping_cart'}}</mat-icon>
+                        </button>
+                    </div>
+                </mat-card-actions>
+            </div>
+        </mat-card>
+    </div>
+    <div class="quantity-control">
+        <div class="price"><span>Price: </span>{{ product.product.price * quantity  | number}}</div>
+        <div class="controls">
+            <button (click)="reduceQuantity()" mat-icon-button color="warn"><mat-icon>remove</mat-icon></button>
+            <div>{{ quantity }}</div>
+            <button (click)="increaseQuantity()" mat-icon-button><mat-icon>add</mat-icon></button>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,9 @@
+<app-dashboard>
+    <div class="container">
+        <h2>Shop Requests</h2>
+        <hr>
+        <app-seller-request style="width: 100%;" *ngFor="let req of requests" [request]="req"></app-seller-request>
+        
+        <h4 *ngIf="requests.length === 0">No New Requests</h4>
+    </div>
+</app-dashboard>

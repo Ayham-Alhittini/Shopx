@@ -1,0 +1,9 @@
+<form [formGroup]="formName">
+    <label>{{field.label}}</label>
+    <mat-radio-group [formControlName]="field.fieldName">
+        <mat-radio-button *ngFor="let option of field.options">{{ option.label }}</mat-radio-button>
+    </mat-radio-group>
+    <mat-error *ngIf="(formName.get(field.fieldName).invalid && (formName.get(field.fieldName).dirty || formName.get(field.fieldName).touched)) && formName.get(field.fieldName)?.hasError('required')">
+        {{ field.label }} is required!
+    </mat-error>
+</form>

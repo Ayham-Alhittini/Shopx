@@ -1,0 +1,85 @@
+.container {
+    min-width: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 50px 15%;
+    margin-bottom: 50px;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.title {
+    color: var(--primary);
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.form {
+    max-width: 400px;
+    min-width: 150px;
+    margin: auto;
+}
+
+.buttons {
+    margin-top: 16px;
+    gap: 25px;
+}
+
+.mat-stepper-horizontal {
+    width: 95%;
+    margin-top: 8px;
+}
+  
+.mat-mdc-form-field {
+    margin-top: 16px;
+}
+
+@media screen and (max-width: 599px) {
+    .container {
+        margin: 50px 5%;
+    }
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+.category {
+    color: var(--primary);
+    font-weight: bold;// decide if it looks good and not fuzy in other browsers
+    min-width: fit-content;
+    display: block;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid var(--primary);
+    cursor: pointer;
+}
+
+.category:hover,
+.category:focus,
+.category:active {
+    color: white;
+    background-color: var(--primary);
+}
+
+.flex-category {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+table{
+    width: 100%;
+}
+.mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+  .user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}

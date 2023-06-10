@@ -1,0 +1,52 @@
+<div class="vertical-center">
+    <div class="form-container mat-elevation-z5"> 
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <h1 class="center title">
+                Login
+            </h1>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input 
+                    type="email"
+                    matInput 
+                    placeholder="example@gmail.com" 
+                    formControlName="email" 
+                />
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                    email is required!
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                    email should be in right format!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input 
+                    type="password"
+                    matInput 
+                    placeholder="Password" 
+                    formControlName="password" 
+                />
+                <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                    password is required!
+                </mat-error>
+            </mat-form-field>
+            
+            <div class="center margin-top">
+                <button [disabled]="loginForm.invalid" mat-raised-button color="accent">LOGIN</button>
+            </div>
+
+            <span class="center margin-top">
+                forgot your password? <a class="signup-link" routerLink="/forgot-password">Reset it here!</a>
+            </span>
+
+            <span class="center margin-top">
+                don't have an account? <a class="signup-link" routerLink="/signup">Sign Up!</a>
+            </span>
+        </form>
+    </div>  
+</div>
+

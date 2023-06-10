@@ -1,0 +1,17 @@
+.card {
+    margin: 50px 15%;
+    background-color: white;
+    border-radius: 25px;
+
+    .card-content {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .button {
+            align-self: center;
+            margin-bottom: 20px;
+        }
+    }
+}

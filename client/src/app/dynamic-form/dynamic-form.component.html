@@ -1,0 +1,5 @@
+<form [formGroup]="dynamicFormGroup">
+    <div *ngFor="let field of fields">
+        <app-dynamic-field [formName]="dynamicFormGroup" [field]="field"></app-dynamic-field>
+    </div>
+</form>

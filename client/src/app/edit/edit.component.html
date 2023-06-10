@@ -1,0 +1,24 @@
+<div class="dialog">
+  <div class="title-bar">
+    <h2 mat-dialog-title>
+      {{ title }}
+    </h2>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <p>{{ description }}</p>
+    <input #file hidden type="file" accept="image/*" (change)="upload(file.files[0])">
+    <div class="image-holder flex-center">
+      <img *ngIf="(imageSrc !== '')" class="image" [src]="(imageSrc | safe)">
+    </div>
+    <p *ngIf="name">File Name: <span *ngIf="name">{{ name }}</span></p>
+    <p *ngIf="!name">No File is Selected</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center" class="buttons">
+    <button *ngIf="!isDone" color="accent" mat-flat-button cdkFocusInitial (click)="file.click()">Choose image</button>
+    <button *ngIf="isDone" mat-flat-button cdkFocusInitial (click)="file.click()">Change image</button>
+    <button *ngIf="isDone" color="accent" mat-flat-button cdkFocusInitial [mat-dialog-close]="fileModel">Done</button>
+  </mat-dialog-actions>
+</div>

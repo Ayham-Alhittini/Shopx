@@ -1,0 +1,27 @@
+<form class="search-container" (ngSubmit)="onSearch()">
+    <div 
+      class="search-wrapper"
+      matAutocompleteOrigin
+      #origin="matAutocompleteOrigin"
+    >
+      <input 
+        class="search-input"
+        type="text" 
+        placeholder="Search" 
+        [formControl]="myControl" 
+        [matAutocomplete]="auto"
+        [matAutocompleteConnectedTo]="origin"
+      >
+      <button [disabled]="myControl.invalid" matIconSuffix mat-icon-button aria-label="Search">
+        <mat-icon class="search-icon">search</mat-icon>
+      </button>
+    </div>
+    <mat-autocomplete 
+      class="autocomplete"
+      #auto="matAutocomplete"
+    >
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </form>

@@ -1,0 +1,23 @@
+<!-- This button triggers the overlay and is it's origin -->
+<div
+  (click)="isOpen = !isOpen"
+  type="button"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  class="icon-holder flex" 
+  aria-label="search"
+>
+  <mat-icon>search</mat-icon>  
+</div>
+
+
+<!-- This template displays the overlay content and is connected to the button -->
+<ng-template
+  cdkConnectedOverlay
+  (backdropClick)="isOpen = false"
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <app-search-bar></app-search-bar>
+</ng-template>

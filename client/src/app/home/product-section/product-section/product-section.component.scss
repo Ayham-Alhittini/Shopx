@@ -1,0 +1,76 @@
+.section {
+    margin: 50px 15% 0px;
+    border: 2px solid var(--primary);
+    background-color: white;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.container > button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 5px;
+    z-index: 3;
+}
+
+.right {
+    right: 0;
+}
+.left {
+    left: 0;
+}
+
+.title {
+    color: var(--primary);
+    margin: 15px 0px 0px 15px;
+    font-size: large;
+    cursor: pointer;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.images {
+    margin: 0 50px;
+    padding: 0px 20px;
+    display: flex;
+    gap: 35px;
+    overflow-x: scroll;
+    scroll-padding: 0px 10px;
+    scroll-snap-type: x mandatory;
+}
+
+@media screen and (max-width: 599px) {
+    .section {
+        margin: 50px 5%;
+    }
+    .images {
+        margin: 0;
+    }
+}
+
+.scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.scrollbar::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.images > div:first-child {
+    scroll-snap-align: start;
+}
+.images > div {
+    scroll-snap-align: center;
+}
+.images > div:last-child {
+    scroll-snap-align: end;
+}
+

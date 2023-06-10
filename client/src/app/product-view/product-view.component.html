@@ -1,0 +1,161 @@
+<app-dashboard>
+    <div class="container">
+        <div class="card">
+            <div class="images-scroll" *ngIf="!loadingImages">
+                <div class="slider-wrapper">
+
+                    <button 
+                        class="left button"
+                        *ngIf="!(isHandset$ | async)  && photos.length > 0"
+                        (click)="scrollBy(slider, -1)"
+                        [disableRipple]="true"
+                        type="button"
+                        aria-label="slide left"
+                        mat-icon-button
+                    >
+                        <mat-icon aria-label="left arrow">arrow_backward</mat-icon>
+                    </button>
+
+                    <div #slider class="slider scrollbar">
+                        <img  *ngFor="let photo of photos; let i = index" [src]="photo.url"/>
+                        <img *ngIf="photos.length === 0 && !loadingImages" alt="no image" src="/assets/no-image.png">
+                    </div>
+                    
+                    <div class="slider-nav">
+                        <div *ngFor="let photo of photos; let i = index" 
+                            (click)="scroll(slider, i)"
+                        >
+                        </div>
+                    </div>
+
+                    <button 
+                        class="right button"
+                        *ngIf="!(isHandset$ | async) && photos.length > 0"
+                        (click)="scrollBy(slider,1)"
+                        [disableRipple]="true"
+                        type="button"
+                        aria-label="slide right"
+                        mat-icon-button
+                    >
+                        <mat-icon aria-label="right arrow">arrow_forward</mat-icon>
+                    </button>
+
+                </div>
+            </div>
+            <div class="spinner-holder" *ngIf="loadingImages">
+                <mat-spinner class="card-content"></mat-spinner>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="product-card" *ngIf="product">
+                <div class="title-group">
+                    <div>
+                        <div class="card-title">{{ product.productName }}</div>
+                        <div class="subtitle">{{ product.category }}, {{ product.subCategory }}</div>  
+                    </div>
+                    <div *ngIf="editMode()" matTooltip="set discount" matTooltipShowDelay="1000">
+                        <button mat-icon-button (click)="openDiscountDialog()"><mat-icon>more_vert</mat-icon></button>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <div class="flex-center icons">
+                        <div class="flex-center"><mat-icon color="accent">inventory</mat-icon><span>: {{ product.quantity }}</span></div>
+                        <div class="flex-center"><mat-icon color="accent">attach_money</mat-icon><span [ngClass]="{'slashed' : product.discountRate > 0}">: {{ product.price }}</span></div>
+                        <div 
+                            *ngIf="product.discountRate && product.discountRate > 0"
+                            class="flex-center"
+                        >
+                            <span>/ {{ product.priceAfterDiscount }}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="editMode()">
+                        <button matTooltip="Delete" matTooltipShowDelay="1000" mat-icon-button (click)="deleteProduct()">
+                            <mat-icon color="warn">delete</mat-icon>
+                        </button>
+                        <button matTooltip="Edit" matTooltipShowDelay="1000" mat-icon-button [routerLink]="'/edit/' + product.id">
+                            <mat-icon color="primary">edit</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <mat-spinner class="card-content" *ngIf="loading"></mat-spinner>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <span class="title">Description</span>
+                <p class="description" *ngIf="product">{{ product.productDescription }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <span class="title">Information</span>
+                <table class="table">
+                    <tr *ngFor="let spec of dataSource">
+                        <td>{{ spec.label }}</td>
+                        <td>{{ spec.value }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div *ngIf="productReview" class="card">
+            <div class="card-content">
+                <span class="title">Reviews</span>
+                <div class="productReview">
+                    <div class="totalRating">
+                        <div class="rate">{{ productReview.productRate }}</div>
+                        <div class="stars">
+                            <span *ngFor="let rate of ratingValue" [class]="'fa fa-star ' + rate"></span>
+                        </div>
+                        <div *ngIf="productReview.numberOfReviews === 1" class="no-of-reviews">1 review</div>
+                        <div *ngIf="productReview.numberOfReviews > 1" class="no-of-reviews">{{ productReview.numberOfReviews }} reviews</div>
+                    </div>
+                    <div class="row">
+                        <div class="side">
+                            <div class="num">5</div>
+                            <div class="bar-container">
+                              <div [style]="'width: ' + productReview.fiveStarPercentage + '%;'" class="bar"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="side">
+                          <div class="num">4</div>
+                          <div class="bar-container">
+                            <div [style]="'width: ' + productReview.fourStarPercentage + '%;'" class="bar"></div>
+                          </div>
+                        </div>
+                        
+                        <div class="side">
+                          <div class="num">3</div>
+                          <div class="bar-container">
+                            <div [style]="'width: ' + productReview.threeStarPercentage + '%;'" class="bar"></div>
+                          </div>
+                        </div>
+                        
+                        <div class="side">
+                          <div class="num">2</div>
+                          <div class="bar-container">
+                            <div [style]="'width: ' + productReview.twoStarPercentage + '%;'" class="bar"></div>
+                          </div>
+                        </div>
+                        
+                        <div class="side">
+                          <div class="num">1</div>
+                          <div class="bar-container">
+                            <div [style]="'width: ' + productReview.oneStarPercentage + '%;'" class="bar"></div>
+                          </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="reviews">
+                    <app-review *ngFor="let review of reviews" [review]="review"></app-review>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-dashboard>

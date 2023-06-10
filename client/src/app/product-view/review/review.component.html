@@ -1,0 +1,28 @@
+<div class="review">
+    <div class="header">
+        <div class="customer">
+            <img [src]="review?.customer?.backgroundPhoto?.url ? review.customer.backgroundPhoto.url : 'assets/no-image.png'">
+            <div>{{ review?.customer.knownAs }}</div>
+        </div>
+    </div>
+    <div class="rating-date-wrapper">
+        <div class="rating">
+            <span *ngFor="let rate of ratingValue" [class]="'fa fa-star ' + rate"></span>
+        </div>
+        <div class="date">{{ review.reviewDate | date : 'shortDate' }}</div>
+    </div>
+    <div class="content">
+        {{ review.reviewContent }}
+    </div>
+    <div class="vote">
+        <div *ngIf="voteRating > 1">{{ voteRating }} overall votes</div>
+        <div *ngIf="voteRating === 1">1 overall vote</div>
+    </div>
+</div>
+<div class="controls">
+    <p>Did you find this helpful?</p>
+    <button mat-ripple [class]="initialVote === 1 ? 'checked' : ''" (click)="vote(1)">Yes</button>
+    <button mat-ripple [class]="initialVote === -1 ? 'checked' : ''" (click)="vote(-1)">No</button>
+</div>
+<mat-divider></mat-divider>
+

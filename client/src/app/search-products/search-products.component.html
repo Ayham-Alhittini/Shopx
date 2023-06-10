@@ -1,0 +1,36 @@
+<app-nav>
+    <div class="container">
+        <div class="filter" *ngIf="(colapseFilter | async) || !filterClosed">
+            <app-filter  
+                (filterEvent)="filterProducts($event)" 
+                [model]="model"
+                [isGeneric]="isGeneric"
+                [categories]="categories"
+            >
+            </app-filter>
+            <button *ngIf="!(colapseFilter | async) && !filterClosed" (click)="filterClosed = !filterClosed" class="close-button" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+
+        <button *ngIf="!(colapseFilter | async) && filterClosed" (click)="filterClosed = !filterClosed" class="button" mat-stroked-button>
+            <mat-icon>filter_alternate</mat-icon>Filter
+        </button>
+        
+
+        <div class="products">
+            <app-searched-product-card *ngFor="let product of products" [routerLink]="'/home/product/' + product.id" [product]="product"></app-searched-product-card>
+            <div class="card font-large" *ngIf="products.length === 0 && !loading">no product found, try to search for something else.</div>
+            <div class="card" *ngIf="products.length === 0 && loading"><mat-spinner></mat-spinner></div>
+        </div>
+    </div>
+    <mat-paginator 
+        [ngStyle]="{'display': products?.length > 0 ? 'block' : 'none'}"
+        class="paginator mat-elevation-z2"
+        #paginator
+        (page)="handlePageEvent($event)"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25]"
+        aria-label="Select page">
+    </mat-paginator>
+</app-nav>

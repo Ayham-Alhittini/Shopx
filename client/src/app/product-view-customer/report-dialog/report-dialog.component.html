@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Report Product</h1>
+<div mat-dialog-content>
+    <form class="form" [formGroup]="reportForm" (ngSubmit)="reportProduct()">
+        <mat-form-field class="full-width" color="accent" appearance="outline">
+            <mat-label>Report Reason</mat-label>
+            <mat-select formControlName="reportReason">
+            <div> 
+                <div *ngFor="let reason of reportReasons">
+                    <mat-option [value]="reason">{{ reason }}</mat-option>
+                </div>
+            </div>
+        </mat-select>
+            <mat-error *ngIf="reportForm.get('reportReason')?.hasError('required')">
+                a reason for the report required!
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" color="accent" appearance="outline">
+            <mat-label>Report Details</mat-label>
+            <input 
+                type="text"
+                matInput 
+                placeholder="Report Details" 
+                formControlName="reportDetails" 
+            />
+            <mat-error *ngIf="reportForm.get('reportDetails')?.hasError('required')">
+                report details are needed!
+            </mat-error>
+        </mat-form-field>
+
+        <button [disabled]="reportForm.invalid" mat-button color="accent">Report</button>
+    </form>
+</div>
+
+

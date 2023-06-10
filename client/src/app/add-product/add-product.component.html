@@ -1,0 +1,8 @@
+<app-dashboard>
+    <div class="container">
+        <h1>Choose a Category</h1>
+        <div class="flex-category">
+            <a *ngFor="let category of categories" [routerLink]="category.link" class="category">{{ category.label }}</a>
+        </div>
+    </div>
+</app-dashboard>

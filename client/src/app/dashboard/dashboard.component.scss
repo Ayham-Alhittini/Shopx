@@ -1,0 +1,61 @@
+.sidenav-container {
+    height: 100%;
+}
+  
+.sidenav {
+    width: 200px;
+}
+  
+.sidenav .mat-toolbar {
+    background: inherit;
+}
+  
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.icons-left {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: left;
+    margin-right: 24px;
+}
+
+.icons-right {
+    display: flex;
+    flex: 1;
+    justify-content: right;
+    align-items: center;
+    margin-left: 24px;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-icon:hover,
+.mat-icon:focus,
+.mat-icon:active {
+    color: var(--accent);
+}
+
+.icon-holder {
+    width: 48px;
+    height: 48px;
+}
+
+
+.backdrop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+}

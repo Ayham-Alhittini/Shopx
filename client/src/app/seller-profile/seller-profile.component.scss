@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px 15%;
+    margin-bottom: 50px;
+}
+
+.card {
+    width: 100%;
+    border-radius: 25px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.change-password {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fab{
+    float: right;
+}
+
+.image {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 300px;
+    height: auto;
+}
+
+
+.info-card {
+    div {
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    ul {
+        font-weight: bold;
+        list-style: none;
+        padding-inline-start: 20px;
+        margin-block-end: unset;
+        line-height: 2;
+
+        span {
+            margin-left: 5px;
+            font-weight: normal;
+        }
+    }
+}
+
+.spinner {
+    height: 100%;
+    max-height: 300px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper {
+    width: 100%;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+}
+
+
+
+

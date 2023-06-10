@@ -1,0 +1,28 @@
+<div class="vertical-center"> 
+    <div> 
+        <form [formGroup]="editPhoneNumberform" (ngSubmit)="editPhoneNumber()">
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <span matPrefix>&nbsp; +962 &nbsp;</span>
+                <input 
+                    type="text"
+                    matInput 
+                    placeholder="7********" 
+                    formControlName="phoneNumber" 
+                />
+                <mat-error *ngIf="editPhoneNumberform.get('phoneNumber')?.hasError('required')">
+                    a phone number is required!
+                </mat-error>
+                <mat-error *ngIf="editPhoneNumberform.get('phoneNumber')?.hasError('pattern')">
+                    phone number needs to be 9 digits!
+                </mat-error>
+            </mat-form-field>
+
+            <div class="actions">
+                <button mat-flat-button type="button" (click)="closeForm()">CANCLE</button>
+                <button [disabled]="editPhoneNumberform.invalid" mat-raised-button color="accent">EDIT</button>
+            </div>
+        </form>
+    </div>  
+</div>

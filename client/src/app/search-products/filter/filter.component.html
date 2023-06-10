@@ -1,0 +1,61 @@
+<div class="filter">
+
+    <span class="title">Categories</span>
+    <div class="categories">
+        <div 
+            *ngFor="let categoryItem of categories" 
+            [routerLink]="'/home/' + categoryItem.link"
+            class="subtitle"
+        >
+            {{ categoryItem.label }}
+        </div>
+    </div>
+
+
+    <span *ngIf="!isGeneric" class="title">Details</span>
+    <div *ngIf="!isGeneric" class="form-wrapper">
+        <app-dynamic-form (newform)="setForm($event)" [model]="model"></app-dynamic-form>
+    </div>
+
+    <span class="title">General</span>
+    <div class="form-wrapper">
+        <form [formGroup]="queryForm">
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Min Price</mat-label>
+                <input 
+                    type="number"
+                    matInput 
+                    placeholder="min price" 
+                    formControlName="minPrice" 
+                />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Max Price</mat-label>
+                <input 
+                    type="number"
+                    matInput 
+                    placeholder="max price" 
+                    formControlName="maxPrice" 
+                />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Search for</mat-label>
+                <input 
+                    type="text"
+                    matInput 
+                    placeholder="enter keyword here" 
+                    formControlName="searchContent" 
+                />
+            </mat-form-field>
+        </form>
+
+        <mat-card-actions class="actions">
+            <button mat-button (click)="resetFilters()">Reset</button>
+            <button mat-raised-button color="accent" (click)="filter()">Filter</button>
+        </mat-card-actions>
+    </div>
+</div>
+

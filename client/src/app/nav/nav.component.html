@@ -1,0 +1,111 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav  #drawer color="primary" class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'push'"
+        [opened]="false">
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list class="nav-list" *ngIf="isCustomer">
+        <a mat-list-item routerLink="/home">Home</a>
+        <a mat-list-item routerLink="/profile">Profile</a>
+        <a mat-list-item routerLink="/favorites">Favorites</a>
+        <a mat-list-item routerLink="/shopping-cart">Shopping Cart</a>
+        <a mat-list-item routerLink="/orders">Orders</a>
+        <a mat-list-item routerLink="/browse-history">Browse History</a>
+      </mat-nav-list>
+
+      <mat-nav-list class="nav-list" *ngIf="isGuest()">
+        <a mat-list-item routerLink="/home">Home</a>
+        <a mat-list-item routerLink="/shopping-cart">Shopping Cart</a>
+        <a mat-list-item routerLink="/login">Login</a>
+      </mat-nav-list>
+
+      <mat-nav-list class="nav-list" *ngIf="isSeller()">
+        <a mat-list-item routerLink="/seller-profile">Profile</a>        
+      </mat-nav-list>
+
+      <mat-nav-list class="nav-list" *ngIf="isAdmin()">
+        <a mat-list-item routerLink="/admin">Profile</a>        
+      </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="flex">
+        
+        <div class="flex1 icons-left">
+          <div class="icon-holder flex" aria-label="Toggle sidenav" (click)="drawer.toggle()">
+            <mat-icon aria-label="Menu">menu</mat-icon>
+          </div>
+
+          <span routerLink="/home" style="font-size: 20px;cursor: pointer;">shopx</span> <!-- <h2>shopx</h2> -->
+        </div>
+
+        <app-search-bar *ngIf="!(isHandset$ | async)" class="search-bar"></app-search-bar>
+
+        <div class="icons-right">
+
+          <div *ngIf="(isHandset$ | async)" class="icon-holder" aria-label="search">
+            <app-floating-search-bar></app-floating-search-bar>
+          </div>
+
+          <div *ngIf="!(isHandset$ | async) && isCustomer" class="icon-holder flex" aria-label="account" routerLink="/profile">
+            <mat-icon>person</mat-icon>  <!-- account_circle -->
+          </div>
+
+          <div *ngIf="!(isHandset$ | async) && (isCustomer || isGuest())" class="icon-holder flex" aria-label="shopping cart" routerLink="/shopping-cart">
+            <span *ngIf="cartService.cartCount > 0" routerLink="/shopping-cart" class="cart-count">{{cartService.cartCount}}</span>
+            <mat-icon fontSet="material-icons-outlined">shopping_cart</mat-icon>
+          </div>
+
+          <div *ngIf="!(isHandset$ | async) && isGuest()" style="margin-right: 10px;" class="icon-holder flex" aria-label="shopping cart" routerLink="/login">
+            <mat-icon fontSet="material-icons-outlined">login</mat-icon>
+          </div>
+
+          <!--for other role (admin & seller to navigate to there profile) -->
+
+          <div *ngIf="!(isHandset$ | async) && isSeller()" class="icon-holder flex" style="cursor: pointer;" aria-label="account" routerLink="/seller-profile">
+            <mat-icon>person</mat-icon>  <!-- account_circle -->
+          </div>
+          <div *ngIf="!(isHandset$ | async) && isAdmin()" class="icon-holder flex" style="cursor: pointer;" aria-label="account" routerLink="/admin">
+            <mat-icon>person</mat-icon>  <!-- account_circle -->
+          </div>
+          <!------------------------------------------- -->
+          <div *ngIf="!(isHandset$ | async) && isCustomer" class="icon-holder flex" aria-label="favorites" routerLink="/favorites">
+            <mat-icon>favorite</mat-icon>
+          </div>
+
+          <div *ngIf="isCustomer" class="icon-holder flex" aria-label="notifications"  [matMenuTriggerFor]="notificationsMenu">
+            <mat-icon >notifications</mat-icon>
+          </div>
+
+          <mat-menu #notificationsMenu="matMenu">
+            <div *ngIf="notificationsArray.length === 0" mat-menu-item>
+              <span>No New Notifications</span>
+            </div>
+            <div *ngIf="notificationsArray.length > 0">
+              <button mat-menu-item *ngFor="let notification of notificationsArray" [routerLink]="'/notifications/' + notification.id">
+                <mat-icon *ngIf="notification.read">check_circle_outline</mat-icon>
+                <mat-icon *ngIf="!notification.read">radio_button_unchecked</mat-icon>
+                <span>{{ notification.title }}</span>
+              </button>
+            </div>
+            
+          </mat-menu>
+
+          <div *ngIf="!isGuest()" class="icon-holder flex" aria-label="more options" [matMenuTriggerFor]="menu">
+            <mat-icon #moreicon>more_vert</mat-icon>
+          </div>
+          
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>logout</span>
+            </button>
+          </mat-menu>
+        </div>
+        
+      </mat-toolbar>
+      <!-- Add Content Here -->
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

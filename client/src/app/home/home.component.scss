@@ -1,0 +1,44 @@
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.categories {
+    margin: 0 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+@media screen and (max-width: 599px) {
+    .categories {
+        margin: 0 5%;
+    }
+}
+
+.category {
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--primary);
+    opacity: 1;
+    width: calc(33% - 25px);
+    max-width: 150px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        object-fit: contain;
+        display: block;
+        height: 70%;
+        width: 70%;
+    }
+}
+
+.category:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}

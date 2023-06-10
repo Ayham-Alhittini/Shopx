@@ -1,0 +1,35 @@
+<div class="section">
+    <h2 [routerLink]="sectionLink" class="title">{{ title }}</h2>
+
+    <div class="container">
+        <button
+            class="lift" 
+            *ngIf="!(isHandset$ | async)"
+            (click)="scrollBy(images, -225)"
+            [disableRipple]="true"
+            type="button"
+            aria-label="slide left"
+            mat-icon-button
+        >
+            <mat-icon aria-label="left arrow">arrow_backward</mat-icon>
+        </button>
+
+        <div #images class="images scrollbar">
+            <div *ngFor="let product of products">
+                <app-product-image [product]="product"></app-product-image>
+            </div>
+        </div>
+
+        <button 
+            class="right"
+            *ngIf="!(isHandset$ | async)"
+            (click)="scrollBy(images, 225)"
+            [disableRipple]="true"
+            type="button"
+            aria-label="slide right"
+            mat-icon-button
+        >
+            <mat-icon aria-label="right arrow">arrow_forward</mat-icon>
+        </button>
+    </div>
+</div>

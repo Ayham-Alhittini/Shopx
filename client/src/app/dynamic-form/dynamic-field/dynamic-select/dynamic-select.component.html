@@ -1,0 +1,20 @@
+<form [formGroup]="formName">
+    <mat-form-field color="accent" appearance="outline">
+        <mat-label>{{ field.label }}</mat-label>
+        <mat-select [formControlName]="field.fieldName">
+            <div *ngIf="!field.hasOwnProperty('dependsOn')"> 
+                <div *ngFor="let option of field.options | keyvalue">
+                    <mat-option [value]="option.value">{{ option.value }}</mat-option>
+                </div>
+            </div>
+            <div *ngIf="field.hasOwnProperty('dependsOn')"> 
+                <div *ngFor="let option of getOptions()">
+                    <mat-option [value]="option">{{ option }}</mat-option>
+                </div>
+            </div>
+        </mat-select>
+        <mat-error *ngIf="formName.get(field.fieldName)?.hasError('required')">
+            {{ field.label }} is required!
+        </mat-error>
+    </mat-form-field>
+</form>

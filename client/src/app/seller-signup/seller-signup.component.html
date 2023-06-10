@@ -1,0 +1,229 @@
+<div class="vertical-center">
+    <div class="form-container mat-elevation-z5" *ngIf="!displayConfirm"> 
+        <mat-stepper linear="false" #mySteper>          
+            <mat-step [stepControl]="signupForm">
+                <form [formGroup]="signupForm">
+
+                    <h1 class="center title">
+                        Sign up as seller
+                    </h1>
+                        
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Identifier name</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="Name" 
+                            formControlName="username" 
+                        />
+                        <mat-error *ngIf="signupForm.get('username').hasError('required')">
+                            name is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width"  color="accent"  appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input 
+                            type="email"
+                            matInput 
+                            placeholder="example@gmail.com" 
+                            formControlName="email" 
+                        />
+                        <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+                            email is required!
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+                            email should be in right format!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width"  color="accent"  appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input 
+                            type="password"
+                            matInput 
+                            placeholder="Password" 
+                            formControlName="password" 
+                        />
+                        <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+                            password is required!
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.get('password')?.hasError('pattern')">
+                            Weak password
+                        </mat-error>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width"  color="accent"  appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input 
+                            type="password"
+                            matInput 
+                            placeholder="Confirm Password" 
+                            formControlName="confirmPassword" 
+                        />
+                        <mat-error *ngIf="signupForm.get('confirmPassword')?.hasError('required')">
+                            please confirm your password
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.get('confirmPassword')?.hasError('passwordsMatch')">
+                            does not match password
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <div class="center margin-top"> 
+                        <button type="button" [disabled]="signupForm.invalid" (click)="goForward(mySteper)" mat-raised-button color="accent">Next</button>
+                    </div>
+
+                    <span class="center margin-top">
+                        already have an account? <a class="signup-link" routerLink="/login">Login!</a>
+                    </span>
+                </form>
+            </mat-step>
+                
+            <mat-step [stepControl]="shopForm">
+                <form [formGroup]="shopForm">
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <span matPrefix>&nbsp; +962 &nbsp;</span>
+                        <input 
+                            type="number"
+                            matInput 
+                            placeholder="7********" 
+                            formControlName="phoneNumber" 
+                            minlength="9"
+                        />
+                        <mat-error *ngIf="shopForm.get('phoneNumber')?.hasError('required')">
+                            a phone number is required!
+                        </mat-error>
+                        <mat-error *ngIf="shopForm.get('phoneNumber')?.hasError('minlength')">
+                            phone number needs to be 9 digits!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Shop Name</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="Shop Name" 
+                            formControlName="knownAs" 
+                        />
+                        <mat-error *ngIf="shopForm.get('knownAs').hasError('required')">
+                            Shop Name is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Shop City</mat-label>
+                        <mat-select formControlName="shopCity">
+                        <div> 
+                            <div *ngFor="let option of cityOptions">
+                                <mat-option [value]="option">{{ option }}</mat-option>
+                            </div>
+                        </div>
+                    </mat-select>
+                        <mat-error *ngIf="shopForm.get('shopCity').hasError('required')">
+                            Shop City is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width"  color="accent"  appearance="outline">
+                        <mat-label>Shop Description</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="description" 
+                            formControlName="shopDescription" 
+                        />
+                        <mat-error *ngIf="shopForm.get('shopDescription')?.hasError('required')">
+                            description is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="center margin-top gap"> 
+                        <button type="button" mat-flat-button matStepperPrevious>Back</button>
+                        <button type="button" [disabled]="shopForm.invalid" mat-raised-button (click)="goForward2(mySteper)" color="accent">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="signupDetailsForm">
+                <form [formGroup]="signupDetailsForm" (ngSubmit)="submit()">
+
+                    <mat-form-field class="full-width" color="accent" appearance="outline">
+                        <mat-label>Tax Number</mat-label>
+                        <input 
+                            type="number"
+                            matInput 
+                            placeholder="tax number" 
+                            formControlName="taxNumber" 
+                        />
+                        <mat-error *ngIf="signupDetailsForm.get('taxNumber').hasError('required')">
+                            tax number is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width"  color="accent"  appearance="outline">
+                        <mat-label>Full Name</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="full name" 
+                            formControlName="fullName" 
+                        />
+                        <mat-error *ngIf="signupDetailsForm.get('fullName')?.hasError('required')">
+                            full name is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width"  color="accent"  appearance="outline">
+                        <mat-label>Bank Name</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="bank name" 
+                            formControlName="bankName" 
+                        />
+                        <mat-error *ngIf="signupDetailsForm.get('bankName')?.hasError('required')">
+                            bank name is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width"  color="accent"  appearance="outline">
+                        <mat-label>Bank Account Number</mat-label>
+                        <input 
+                            type="text"
+                            matInput 
+                            placeholder="bank account number" 
+                            formControlName="bankAccountNumber" 
+                        />
+                        <mat-error *ngIf="signupDetailsForm.get('bankAccountNumber')?.hasError('required')">
+                            a bank account number is required!
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <div class="center margin-top gap"> 
+                        <button type="button" mat-flat-button matStepperPrevious>Back</button>
+                        <button [disabled]="signupDetailsForm.invalid || disableSubmit" mat-raised-button matStepperNext color="accent">SIGN UP</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-stepper>
+    </div>
+
+    <mat-card class="card " *ngIf="displayConfirm">
+        <mat-card-header>
+          <mat-card-title class="card-title">Confirm email</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>A confirmation Email has been sent to you, please confirm your email.</p>
+          <p>If the email didn't reach you<a class="signup-link" routerLink="/resend-confirm">resend.</a></p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button routerLink="/login" mat-button>DONE</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+

@@ -1,0 +1,98 @@
+<div class="vertical-center"> 
+    <div> 
+        <form [formGroup]="editProfileform" (ngSubmit)="editProfile()">
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <span matPrefix>&nbsp; +962 &nbsp;</span>
+                <input 
+                    type="text"
+                    matInput 
+                    placeholder="7********" 
+                    formControlName="phoneNumber" 
+                />
+                <mat-error *ngIf="editProfileform.get('phoneNumber')?.hasError('required')">
+                    a phone number is required!
+                </mat-error>
+                <mat-error *ngIf="editProfileform.get('phoneNumber')?.hasError('pattern')">
+                    phone number needs to be 9 digits!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>tax Number</mat-label>
+                <input 
+                    type="number"
+                    matInput 
+                    placeholder="tax number" 
+                    formControlName="taxNumber" 
+                />
+                <mat-error *ngIf="editProfileform.get('taxNumber')?.hasError('required')">
+                    a tax number is required!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>City</mat-label>
+                <mat-select 
+                    placeholder="city"
+                    formControlName="shopCity"
+                    [value]="editProfileform.get('shopCity').value"
+                >
+                    <div *ngFor="let city of cities"> 
+                        <mat-option [value]="city">{{ city }}</mat-option>
+                    </div>
+                </mat-select>
+                <mat-error *ngIf="editProfileform.get('shopCity')?.hasError('required')">
+                    a city is required!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Shop Description</mat-label>
+                <textarea
+                    cdkTextareaAutosize
+                    cdkAutosizeMaxRows="8"
+                    matInput 
+                    placeholder="description" 
+                    formControlName="shopDescription" 
+                >
+                </textarea>
+                <mat-error *ngIf="editProfileform.get('shopDescription')?.hasError('required')">
+                    a description of the shop is required!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Bank Name</mat-label>
+                <input 
+                    type="text"
+                    matInput 
+                    placeholder="bank name" 
+                    formControlName="bankName" 
+                />
+                <mat-error *ngIf="editProfileform.get('bankName')?.hasError('required')">
+                    a bank name is required!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" color="accent" appearance="outline">
+                <mat-label>Bank Account Number</mat-label>
+                <input 
+                    type="number"
+                    matInput 
+                    placeholder="" 
+                    formControlName="bankAccountNumber" 
+                />
+                <mat-error *ngIf="editProfileform.get('bankAccountNumber')?.hasError('required')">
+                    a bank account number is required!
+                </mat-error>
+            </mat-form-field>
+            
+            <div class="actions">
+                <button mat-flat-button type="button" (click)="closeForm()">CANCLE</button>
+                <button [disabled]="editProfileform.invalid || disableSubmit" mat-raised-button color="accent">EDIT</button>
+            </div>
+        </form>
+    </div>  
+</div>

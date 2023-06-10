@@ -1,0 +1,13 @@
+<form [formGroup]="formName">
+    <mat-form-field color="accent" appearance="outline">
+        <mat-label>{{ field.label }}</mat-label>
+        <input 
+            matInput 
+            [type]="field.type" 
+            [formControlName]="field.fieldName" 
+        />
+        <mat-error *ngIf="(formName.get(field.fieldName)?.invalid && (formName.get(field.fieldName)?.dirty || formName.get(field.fieldName)?.touched)) && formName.get(field.fieldName)?.hasError('required')">
+            {{ field.label }} is required!
+        </mat-error>
+    </mat-form-field>
+</form>

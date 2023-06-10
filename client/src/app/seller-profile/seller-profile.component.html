@@ -1,0 +1,57 @@
+<app-dashboard>
+    <div class="container">
+        <div class="card">
+            
+            <img *ngIf="photoUrl !== ''" class="image" [src]="photoUrl || ''" width="auto" height="300"/> 
+
+            <img *ngIf="photoUrl === ''" class="image" src="/assets/user.png" width="auto" height="300"/> 
+
+            <!-- <div *ngIf="!imageIsLoaded" class="spinner">
+                <mat-spinner></mat-spinner>
+            </div> -->
+
+            <div >
+                <button [disabled]="imageEditDisabled" (click)="openDialog()" class="fab" mat-fab matTooltip="Edit Image" color="primary" aria-label="edit profile image">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </div>
+        
+        <div class="card info-card">
+            <div>
+                Profile Information
+            </div>
+            <ul *ngIf="profile && !editProfile">
+                <li>Store Name: <span>{{ profile.knownAs }}</span></li>
+                <li>Phone Number: <span>{{ profile.phoneNumber }}</span></li>
+                <li>tax Number: <span>{{ profile.taxNumber }}</span></li>
+                <li>Address: <span>{{ profile.shopCity }}</span></li>
+                <li>Bank Name: <span>{{ profile.bankName }}</span></li>
+                <li>Bank Account Number: <span>{{ profile.bankAccountNumber }}</span></li>
+            </ul>
+
+            <app-seller-edit-profile *ngIf="editProfile" (closeEvent)="closeEditForm($event)" [profile]="profile" class="form-wrapper"></app-seller-edit-profile>
+            
+            <div >
+                <button *ngIf="!editProfile" (click)="toggleEditForm()" class="fab" mat-fab matTooltip="Edit Info" color="primary" aria-label="edit profile info">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="card">
+            <span class="change-password">
+                change your password
+                <div>
+                    <button class="fab" *ngIf="!changePassword" (click)="changePassword = !changePassword" class="fab" mat-flat-button aria-label="change password">
+                        change
+                    </button>
+                </div>
+            </span>
+
+            <app-seller-change-password (closeEvent)="changePassword = !changePassword" *ngIf="changePassword" class="form-wrapper"></app-seller-change-password>
+
+        </div>
+    </div>
+</app-dashboard>
+
+

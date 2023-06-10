@@ -1,0 +1,208 @@
+<app-nav>
+    <div class="container">
+        <div *ngIf="!isCheckedout" class="section">
+            <h1 class="title">Checkout</h1>
+            <div class="card">
+                <mat-tab-group [selectedIndex]="selected" (selectedIndexChange)="onIndexChange($event)" dynamicHeight>
+                    <mat-tab label="Address">
+                        <div class="tab">
+                            <form class="form-wrapper" [formGroup]="address">
+        
+                                <h2 class="title">
+                                    Shipping address
+                                </h2>
+
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>City</mat-label>
+                                    <mat-select formControlName="city">
+                                        <div> 
+                                            <div *ngFor="let option of cityOptions">
+                                                <mat-option [value]="option">{{ option }}</mat-option>
+                                            </div>
+                                        </div>
+                                    </mat-select>
+                                    <input 
+                                        type="text"
+                                        matInput 
+                                        placeholder="city" 
+                                        formControlName="city" 
+                                    />
+
+                                    <mat-error *ngIf="address.get('city')?.hasError('required')">
+                                        City is required!
+                                    </mat-error>
+                                </mat-form-field>
+            
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>Post Code</mat-label>
+                                    <input 
+                                        type="number"
+                                        matInput 
+                                        placeholder="00000" 
+                                        formControlName="postCode" 
+                                    />
+                                    <mat-error *ngIf="address.get('postCode')?.hasError('required')">
+                                        a post code is needed!
+                                    </mat-error>
+                                    <mat-error *ngIf="address.get('postCode')?.hasError('pattern')">
+                                        post code needs to be 5 digits!
+                                    </mat-error>
+                                </mat-form-field>
+    
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>Address Line 1</mat-label>
+                                    <input 
+                                        type="text"
+                                        matInput 
+                                        placeholder="street name, area name" 
+                                        formControlName="address1" 
+                                    />
+                                    <mat-error *ngIf="address.get('address1')?.hasError('required')">
+                                        an address is required!
+                                    </mat-error>
+                                </mat-form-field>
+    
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>Address Line 2</mat-label>
+                                    <input 
+                                        type="text"
+                                        matInput 
+                                        placeholder="building no., apartment no." 
+                                        formControlName="address2" 
+                                    />
+                                </mat-form-field>
+                                
+                                <div class="center margin-top">
+                                    <button [disabled]="address.invalid"  (click)="selected = selected + 1" color="accent" mat-flat-button>Next</button>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab label="Delivery">
+                        <div class="tab">
+                            <form class="form-wrapper" [formGroup]="deliveryOption">
+        
+                                <h2 class="title">
+                                    Delivery Option
+                                </h2>
+            
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>Delivery Option</mat-label>
+                                    <mat-select formControlName="deliveryOption">
+                                        <div> 
+                                            <div *ngFor="let option of deliveryOptions">
+                                                <mat-option [value]="option">{{ option }}</mat-option>
+                                            </div>
+                                        </div>
+                                    </mat-select>
+                                    <mat-error *ngIf="deliveryOption.get('deliveryOption')?.hasError('required')">
+                                        delivery option is required!
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <!-- <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>City</mat-label>
+                                    <mat-error *ngIf="address.get('city').hasError('required')">
+                                        City is required!
+                                    </mat-error>
+                                </mat-form-field> -->
+                                
+                                <div class="center margin-top buttons">
+                                    <button (click)="selected = selected - 1" mat-flat-button>Back</button>
+                                    <button [disabled]="deliveryOption.invalid" (click)="selected = selected + 1" color="accent" mat-flat-button>Next</button>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab label="Payment">
+                        <div class="tab">
+                            <form class="form-wrapper" [formGroup]="card" (ngSubmit)="checkout()">
+        
+                                <h2 class="title">
+                                    Payment
+                                </h2>
+            
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>Card Number</mat-label>
+                                    <input 
+                                        type="text"
+                                        matInput 
+                                        placeholder="card number" 
+                                        formControlName="cardNumber" 
+                                    />
+                                    <mat-error *ngIf="card.get('cardNumber')?.hasError('required')">
+                                        card number is required!
+                                    </mat-error>
+                                </mat-form-field>
+            
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>Expiration Year</mat-label>
+                                    <input 
+                                        type="number"
+                                        matInput 
+                                        placeholder="YY" 
+                                        formControlName="expirationYear" 
+                                    />
+                                    <mat-error *ngIf="card.get('expirationYear')?.hasError('required')">
+                                        expiration year is needed!
+                                    </mat-error>
+                                </mat-form-field>
+    
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>Expiration Month</mat-label>
+                                    <input 
+                                        type="number"
+                                        matInput 
+                                        placeholder="MM" 
+                                        formControlName="expirationMonth" 
+                                    />
+                                    <mat-error *ngIf="card.get('expirationMonth')?.hasError('required')">
+                                        expiration month is needed!
+                                    </mat-error>
+                                </mat-form-field>
+    
+                                <mat-form-field class="full-width" color="accent" appearance="outline">
+                                    <mat-label>CVC</mat-label>
+                                    <input 
+                                        type="number"
+                                        matInput 
+                                        placeholder="000" 
+                                        formControlName="cvc" 
+                                    />
+                                    <mat-error *ngIf="card.get('cvc')?.hasError('required')">
+                                        cvc is needed!
+                                    </mat-error>
+                                    <mat-error *ngIf="card.get('cvc')?.hasError('pattern')">
+                                        cvc has to be 3 digits!
+                                    </mat-error>
+                                </mat-form-field>
+                                
+                                <div class="center margin-top buttons">
+                                    <button type="button" (click)="selected = selected - 1" mat-flat-button>Back</button>
+                                    <button [disabled]="address.invalid || deliveryOption.invalid || card.invalid || disable" color="accent" mat-flat-button>Checkout</button>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+
+        <div *ngIf="isCheckedout" class="section">
+            <h1 class="title">Success</h1>
+            <div class="wrapper">
+                
+                <div><mat-icon>check_circle</mat-icon><h2>Thank you. Your order has been placed.</h2></div>
+                <p>
+                    your order will be shipped soon and on its way to you
+                </p>
+                <button color="accent" mat-stroked-button routerLink="/orders">
+                    View your order
+                </button>
+            </div>
+        </div>
+
+    </div>
+</app-nav>

@@ -1,0 +1,64 @@
+<app-nav>
+    <div class="container">
+        <h1 class="title">Order Details</h1>
+        <div class="spinner" *ngIf="loading && !details">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div class="card" *ngIf="!loading && details">
+            <div class="content">
+                <h3 class="title">Order Information:</h3>
+                <div><span>Order Id: </span>{{ details?.id }}</div>
+                <div><span>Date Added: </span>{{ details?.dateAdded | date : 'shortDate' }}</div>
+            </div>
+        </div>
+        <div class="card" *ngIf="!loading && details">
+            <div class="content">
+                <h3 class="title">Shipping Address:</h3>
+                <div><span>city: </span>{{ details?.address.city }}</div>
+                <div><span>Post Code: </span>{{ details?.address.postCode }}</div>
+                <div><span>Address Line 1: </span>{{ details?.address.address1 }}</div>
+                <div *ngIf="details?.address.address2"><span>Address Line 2: </span>{{ details?.address.address2 }}</div>
+            </div>
+        </div>
+
+        <div *ngIf="!loading && details?.sales.length > 0" class="card no-flex">
+            <div class="content table-wrapper">
+                <table  mat-table [dataSource]="salesArray">
+                
+                        <ng-container matColumnDef="productName">
+                            <th mat-header-cell *matHeaderCellDef> Product Name </th>
+                            <td mat-cell *matCellDef="let sale"> {{sale.productName}} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="quantity">
+                            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                            <td mat-cell *matCellDef="let sale"> {{sale.quantity}} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="productPrice">
+                            <th mat-header-cell *matHeaderCellDef> Price </th>
+                            <td mat-cell *matCellDef="let sale"> {{ sale.price }} </td>
+                        </ng-container>
+                
+                        <ng-container matColumnDef="totalPrice">
+                            <th mat-header-cell *matHeaderCellDef> Total Price </th>
+                            <td mat-cell *matCellDef="let sale"> {{sale.total}} </td>
+                        </ng-container>
+                
+                        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+            
+                        
+                </table>
+                <div class="totalOrderPrice"><span>Total Order Price: </span>{{details.total}}</div>
+            </div>
+        </div>
+
+        <div class="card" *ngIf="!loading && !details">
+            <div class="content">
+                <h4>It looks like there is not an order with this ID.</h4>
+                <a mat-striked-button routerLink="/orders">go back to orders history</a>
+            </div>
+        </div>
+    </div>
+</app-nav>

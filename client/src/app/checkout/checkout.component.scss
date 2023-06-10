@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px 15%;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 599px) {
+    .container {
+        margin: 50px 5%;
+    }
+}
+
+.form-wrapper {
+    max-width: 500px;
+}
+
+.section {
+    width: 100%;
+    max-width: 700px;
+}
+
+.title {
+    align-self: flex-start;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    background-color: white;
+    margin-bottom: 25px;
+}
+
+.tab {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    gap: 10px
+}
+
+.wrapper {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    mat-icon {
+        transform: scale(2.5);
+        margin: 5px;
+    }
+
+    div {
+        margin: 25px 25px 0 25px;
+    }
+
+    p {
+        margin: 0px 25px ;
+    }
+
+    button {
+        margin: 25px;
+    }
+}

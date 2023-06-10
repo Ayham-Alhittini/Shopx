@@ -1,0 +1,32 @@
+<app-nav>
+    <div class="container">
+        <div class="section">
+            <h1 class="title">Favorites</h1>
+            <div class="spinner" *ngIf="loading">
+                <mat-spinner></mat-spinner>
+            </div>
+            <app-favorite-product 
+                class="product" 
+                *ngFor="let product of onPageProducts" 
+                [product]="product"
+                (removeFromFavoritesEvent)="removeFromFavorites($event)"
+                [routerLink]="'/home/product/' + product.id"
+            >
+            </app-favorite-product>
+            <div class="card" *ngIf="!loading && favoriteProducts.length === 0">
+                <h4>You have no favorites yet.</h4>
+                <a mat-striked-button routerLink="/home">get back to shopping</a>
+            </div>
+        </div>
+    </div>
+    <mat-paginator 
+        [ngStyle]="{'display': favoriteProducts?.length > 0 ? 'block' : 'none'}"
+        [length]="favoriteProducts.length"
+        class="paginator mat-elevation-z2"
+        #paginator
+        (page)="handlePageEvent($event)"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25]"
+        aria-label="Select page">
+    </mat-paginator>
+</app-nav>

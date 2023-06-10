@@ -1,0 +1,98 @@
+$purple-palette: (
+ 50: #e9e9ef,
+ 100: #c7c8da,
+ 200: #a4a4c0,
+ 300: #8281a6,
+ 400: #6a6694,
+ 500: #544c83,
+ 600: #4e457a,
+ 700: #453c6f,
+ 800: #3d3262,
+ 900: #2f234b,
+ A100: #fff7fa,
+ A200: #e0cbdc,
+
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: rgba(black, 0.87),
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+   A100: rgba(black, 0.87),
+   A200: rgba(black, 0.87),
+ )
+);
+
+$pink-palette: (
+ 50: #fee2eb,
+ 100: #fcb5cd,
+ 200: #f983ab,
+ 300: #f74a8a,
+ 400: #f4006f,
+ 500: #ee0055,
+ 600: #de0054,
+ 700: #c80050,
+ 800: #b3004d,
+ 900: #8e0048,
+ 
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: rgba(black, 0.87),
+   400: rgba(black, 0.87),
+   500: rgba(black, 0.87),
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+ )
+);
+
+
+@use "./app/signup/signup.component-theme" as signup;
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette($purple-palette, 900, A100, A200);
+$my-accent: mat.define-palette($pink-palette, 300);
+
+// $my-special-primary: mat.define-palette($purple-palette, A200);
+
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+  ),
+  typography: mat.define-typography-config(),
+));
+
+// $my-special-theme: mat.define-light-theme((
+//   color: (
+//     primary: $my-special-primary,
+//     accent: $my-accent,
+//   ),
+//   typography: mat.define-typography-config(),
+// ));
+
+@include mat.core-theme($my-theme);
+
+// @include mat.button-theme($my-theme);
+
+// @include mat.sidenav-theme($my-theme);
+
+// @include mat.form-field-theme($my-theme);
+
+@include mat.all-component-themes($my-theme);
+
+// @include signup.color($my-theme);
+
+

@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    margin: 50px 15%;
+    margin-bottom: 50px;
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 599px) {
+    .container {
+        margin: 50px 5%;
+    }
+}
+
+.paginator {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+.badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    gap: 25px;
+    border-radius: 25px;
+
+    span {
+        margin: 25px;
+        font-size: x-large;
+        text-align: center;
+    }
+
+    a {
+        margin-bottom: 25px;
+    }
+
+    mat-spinner {
+        margin-bottom: 25px;
+    }
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 150px;
+    right: 5%;
+
+    mat-icon {
+        transform: scale(1.4);
+    }
+}
+
+
+

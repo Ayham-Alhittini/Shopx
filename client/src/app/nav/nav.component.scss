@@ -1,0 +1,82 @@
+.sidenav-container {
+    height: 100%;
+}
+  
+.sidenav {
+    width: 200px;
+}
+  
+.sidenav .mat-toolbar {
+    background: inherit;
+}
+  
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.search-bar {
+    max-width: 685px;
+    width: 100%;
+    margin: 10px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.backdrop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+}
+
+.icons-left {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: left;
+    margin-right: 24px;
+}
+
+.icons-right {
+    display: flex;
+    flex: 1;
+    justify-content: right;
+    align-items: center;
+    margin-left: 24px;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-icon:hover,
+.mat-icon:focus,
+.mat-icon:active {
+    color: var(--accent);
+}
+
+.mat-icon {
+    font-size: 30px;padding: 10px;
+}
+
+.icon-holder {
+    width: 48px;
+    height: 48px;
+}
+
+.cart-count{
+    background: red;
+    padding: 1px 5px 1px 5px;
+    border-radius: 40px;
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 5px;
+    cursor: pointer;
+}

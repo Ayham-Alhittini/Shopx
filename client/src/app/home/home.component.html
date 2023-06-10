@@ -1,0 +1,26 @@
+<app-nav>
+    <div class="container">
+        <div class="categories">
+            <div *ngFor="let categoryItem of categories" class="category" [routerLink]="categoryItem.link">
+                <img [src]="categoryItem.logo">
+            </div>
+        </div>
+        <app-product-section 
+            *ngIf="genericProducts.length > 0" 
+            [products]="genericProducts"
+            title="Newly Added"
+            sectionLink="all"
+            >
+        </app-product-section>
+        
+        <div *ngFor="let categoryProducts of categoriesProducts">
+            <app-product-section 
+                *ngIf="categoryProducts.products.length > 0" 
+                [title]="categoryProducts.label" 
+                [sectionLink]="categoryProducts.link" 
+                [products]="categoryProducts.products"
+            >
+            </app-product-section>
+        </div>
+    </div>
+</app-nav>

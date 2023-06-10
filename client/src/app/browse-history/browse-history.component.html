@@ -1,0 +1,35 @@
+<app-nav>
+    <div class="container">
+        <div class="section">
+            <div class="title-wrapper">
+                <div><h1 class="title">Browse History</h1></div>
+                <button (click)="deleteAll()" *ngIf="!loading && viewedProducts.length > 0" mat-flat-button color="warn">Delete All</button>
+            </div>
+            <div class="spinner" *ngIf="loading">
+                <mat-spinner></mat-spinner>
+            </div>
+            <app-history-product 
+                class="product" 
+                *ngFor="let product of onPageProducts" 
+                [product]="product"
+                (removeFromHistoryEvent)="removeFromHistory($event)"
+                [routerLink]="product.state === 'deleted' ? null : '/home/product/' + product.id"
+            >
+            </app-history-product>
+            <div class="card" *ngIf="!loading && viewedProducts.length === 0">
+                <h4>You have no viewed products yet.</h4>
+                <a mat-striked-button routerLink="/home">get back to shopping</a>
+            </div>
+        </div>
+    </div>
+    <mat-paginator 
+        [ngStyle]="{'display': viewedProducts?.length > 0 ? 'block' : 'none'}"
+        [length]="viewedProducts.length"
+        class="paginator mat-elevation-z2"
+        #paginator
+        (page)="handlePageEvent($event)"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25]"
+        aria-label="Select page">
+    </mat-paginator>
+</app-nav>

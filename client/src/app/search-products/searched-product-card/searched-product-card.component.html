@@ -1,0 +1,47 @@
+<mat-card matRipple [matRippleUnbounded]="false" class="seller-product-card">
+    
+    <div class="content-holder">
+        <mat-card-header>
+            <div class="image-holder">
+                <img *ngIf="product.productPhotos[0]" loading="lazy" class="image" width="272" height="204" [src]="product.productPhotos[0]?.url"/>
+                <img *ngIf="!product.productPhotos[0]?.url" loading="lazy" class="image" width="272" height="204" src="/assets/no-image.png"/>
+            </div>
+            <mat-card-title-group>
+                <mat-card-title>{{ product.productName }}</mat-card-title>
+                <mat-card-subtitle>{{ product.category }}, {{ product.subCategory }}</mat-card-subtitle>
+            </mat-card-title-group>
+        </mat-card-header>
+
+        
+        <mat-card-actions class="actions" align="end">
+            <div class="flex-center gap-margin">
+                <div class="info flex-center"><mat-icon color="accent">inventory</mat-icon><span>: {{ product.quantity }}</span></div>
+                <div class="info flex-center"><mat-icon color="accent">attach_money</mat-icon><span [ngClass]="{'slashed' : product.discountRate > 0}">: {{ product.price }}</span></div>
+                <div 
+                    *ngIf="product.discountRate && product.discountRate > 0"
+                    class="info flex-center"
+                >
+                    <span>/ {{ product.priceAfterDiscount }}</span>
+                </div>
+            </div>    
+            <div>
+                <button 
+                    [matTooltip]="onWishlist ? 'remove from favorites' : 'add to favorites'" 
+                    matTooltipShowDelay="1000" 
+                    mat-icon-button 
+                    (click)="$event.stopPropagation();toggleFavorites()"
+                >
+                    <mat-icon color="accent">{{ onWishlist ? 'favorite' : 'favorite_outline'}}</mat-icon>
+                </button>
+                <button 
+                    [matTooltip]="onCart ? 'remove from shopping cart' : 'add to shopping cart'" 
+                    matTooltipShowDelay="1000" 
+                    mat-icon-button 
+                    (click)="$event.stopPropagation();toggleShoppingCart()"
+                >
+                    <mat-icon color="primary">{{ onCart ? 'remove_shopping_cart' : 'add_shopping_cart'}}</mat-icon>
+                </button>
+            </div>
+        </mat-card-actions>
+    </div>
+</mat-card>
