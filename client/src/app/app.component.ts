@@ -20,7 +20,8 @@ export class AppComponent {
 
     if (this.authService.loadedUser === null)
       this.getGuestData();
-    else {
+    else if (this.authService.loadedUser.accountType === 'Customer') {
+      
       this.cartService.getCart().subscribe({
         next: res => {
           res.forEach(element => {

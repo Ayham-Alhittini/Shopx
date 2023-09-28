@@ -243,7 +243,7 @@ export class ProductViewCustomerComponent implements OnInit {
         if(error && error.error && !error.error.message ) {
           this.openSnackbar(error.error, 'ok');
         } else if(error && error.message) {
-          this.openSnackbar("an error occured while posting, please try again", "ok");
+          this.openSnackbar("you can only review the product that you bought", "ok");
         }
       }
     })

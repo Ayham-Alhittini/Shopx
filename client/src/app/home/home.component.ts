@@ -59,6 +59,8 @@ export class HomeComponent implements OnInit {
       productsArr = [ ...productsArr, { productId: products[i].id, url: url } ];
     }
 
+    
+
     return productsArr;
   }
 
