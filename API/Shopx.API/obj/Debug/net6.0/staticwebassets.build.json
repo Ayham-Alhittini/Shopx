@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4Votcvnl3y0wl8iRRShgpi0xevJBUTmXwAefNTqq6Vk=",
+  "Hash": "I+9I9Qq/xIJyll+EMquejQO2IEkpf0iA4USVdP65rpE=",
   "Source": "Shopx.API",
   "BasePath": "_content/Shopx.API",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Shopx.API\\wwwroot",
       "Source": "Shopx.API",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\3rdpartylicenses.txt",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\3rdpartylicenses.txt",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "3rdpartylicenses.txt",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\3rdpartylicenses.txt"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\assets\\hide.png",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\assets\\hide.png",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "assets/hide.png",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\hide.png"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\assets\\no-image.png",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\assets\\no-image.png",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "assets/no-image.png",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\no-image.png"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\assets\\show.png",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\assets\\show.png",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "assets/show.png",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\show.png"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\assets\\user.png",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\assets\\user.png",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "assets/user.png",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\user.png"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\favicon.ico",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\index.html",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\main.8b63f3cbc225c192.js",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\main.8b63f3cbc225c192.js",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "main.8b63f3cbc225c192.js",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\main.8b63f3cbc225c192.js"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\polyfills.8a5ff49d02250b4d.js",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\polyfills.8a5ff49d02250b4d.js",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "polyfills.8a5ff49d02250b4d.js",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\polyfills.8a5ff49d02250b4d.js"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\runtime.0e094762732f292a.js",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\runtime.0e094762732f292a.js",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "runtime.0e094762732f292a.js",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\runtime.0e094762732f292a.js"
     },
     {
-      "Identity": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\styles.241f6a45083c3d3a.css",
+      "Identity": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\styles.241f6a45083c3d3a.css",
       "SourceId": "Shopx.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\wwwroot\\",
       "BasePath": "_content/Shopx.API",
       "RelativePath": "styles.241f6a45083c3d3a.css",
       "AssetKind": "All",

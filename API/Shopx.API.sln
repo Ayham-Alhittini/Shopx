@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopx.API", "User.Management.API\Shopx.API.csproj", "{6B553A6E-1183-454A-B850-AEE70FE6AC58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopx.API", "Shopx.API\Shopx.API.csproj", "{6B553A6E-1183-454A-B850-AEE70FE6AC58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

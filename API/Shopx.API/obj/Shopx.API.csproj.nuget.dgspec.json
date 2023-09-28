@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\Shopx.API.csproj": {}
+    "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\Shopx.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\Shopx.API.csproj": {
+    "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\Shopx.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\Shopx.API.csproj",
+        "projectUniqueName": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\Shopx.API.csproj",
         "projectName": "Shopx.API",
-        "projectPath": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\Shopx.API.csproj",
+        "projectPath": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\Shopx.API.csproj",
         "packagesPath": "C:\\Users\\ayham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ayham\\Downloads\\Shopx-main\\Shopx API\\User.Management.API\\obj\\",
+        "outputPath": "C:\\Users\\ayham\\Desktop\\Git Uploads\\Shopx\\API\\Shopx.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ayham\\AppData\\Roaming\\NuGet\\NuGet.Config",
